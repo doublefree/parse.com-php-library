@@ -184,7 +184,7 @@ class parseRestClient{
 	private function checkResponse($response,$responseCode,$expectedCode){
 		//TODO: Need to also check for response for a correct result from parse.com
 		if(!in_array($responseCode,$expectedCode)){
-			$error = json_decode($response);
+			$error = json_decode($response, true);
 			$this->throwError($error->error,$error->code);
 		}
 		else{
@@ -193,7 +193,7 @@ class parseRestClient{
 				return true;
 			}
 			else{
-				return json_decode($response);
+				return json_decode($response, true);
 			}
 		}
 	}
